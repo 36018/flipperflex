@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Flipper : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnHit;
+    [SerializeField] private UnityEvent boo;
 
     private HingeJoint hinge;
 
@@ -41,5 +42,6 @@ public class Flipper : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player")) return;
 
         OnHit.Invoke();
+        boo.Invoke();
     }
 }

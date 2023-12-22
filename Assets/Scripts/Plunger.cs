@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Plunger : MonoBehaviour
 {
+    [SerializeField] private UnityEvent boo;
     private GameObject ball;
 
     void Start()
@@ -11,8 +13,9 @@ public class Plunger : MonoBehaviour
     void Update()
     {
         if (ball && Input.GetKeyDown(KeyCode.Space)) 
-        {
+        {         
             ball.GetComponent<Rigidbody>().AddForce(transform.up * Random.Range(200, 300));
+            boo.Invoke();
         }
     }
 
@@ -26,5 +29,6 @@ public class Plunger : MonoBehaviour
     {
         if (!collision.transform.CompareTag("Player")) return;
         ball = null;
+        
     }
 }
